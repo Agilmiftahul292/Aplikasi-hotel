@@ -1,0 +1,15 @@
+class Kamar implements Daftar {
+    private String[] daftarKamar;
+
+    public Kamar() {
+        // Inisialisasi atau pengambilan daftar kamar dari database atau sumber lainnya
+        this.daftarKamar = new String[]{"Kamar Standar", "Kamar Deluxe", "Suite"};
+    }
+
+    public void daftar() {
+        System.out.println("Daftar kamar hotel:");
+        for (String jenisKamar : daftarKamar) {
+            System.out.println(jenisKamar);
+        }
+    }
+}
