@@ -1,0 +1,31 @@
+import java.util.Scanner;
+public class HotelBookingSystem {
+    public static void main(String[] args) {
+        try (Scanner scanner = new Scanner(System.in)) {
+            Login login = new Login();
+
+            // Contoh penggunaan login
+            if (!login.masuk()) {
+                System.out.println("Login gagal. Silakan coba lagi.");
+                return;
+            }
+
+            Bank bank = new Bank();
+            Tamu tamu = new Tamu("AGIL", "2024-01-03");
+            tamu.infoTamu();
+
+            // Contoh penggunaan saldo dari bank
+            System.out.println("Saldo saat ini: " + bank.getSaldo());
+
+            // Contoh transaksi pembayaran
+            double jumlahPembayaran = 500.0;
+            bank.lakukanTransaksi(jumlahPembayaran);
+
+            // Contoh penggunaan saldo setelah transaksi
+            System.out.println("Saldo setelah pembayaran: " + bank.getSaldo());
+
+            Pembayaran pembayaran = new Pembayaran(tamu.getNama(), "2024-01-03", jumlahPembayaran);
+            pembayaran.cetakStruk();
+        }
+    }
+}
