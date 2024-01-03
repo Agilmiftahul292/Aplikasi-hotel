@@ -1,0 +1,28 @@
+import java.util.Scanner;
+
+class Login {
+    private Scanner scanner;
+
+    public Login() {
+        this.scanner = new Scanner(System.in);
+    }
+
+    public boolean masuk(String username, String password) {
+        // Implementasi login
+        // Ganti dengan logika sesuai kebutuhan
+        return "agil".equals(username) && "1234".equals(password);
+    }
+
+    public boolean masuk() {
+        System.out.println("====LOGIN REGISTRASI====");
+        System.out.print("Masukkan username: ");
+        String inputUsername = scanner.nextLine();
+
+        System.out.print("Masukkan password: ");
+        String inputPassword = scanner.nextLine();
+
+        // Implementasi login
+        // Ganti dengan logika sesuai kebutuhan
+        return "agil".equals(inputUsername) && "1234".equals(inputPassword);
+    }
+}
