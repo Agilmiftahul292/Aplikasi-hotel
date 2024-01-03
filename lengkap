@@ -1,0 +1,146 @@
+import java.util.Scanner;
+public class HotelBookingSystem {
+    public static void main(String[] args) {
+        try (Scanner scanner = new Scanner(System.in)) {
+            Login login = new Login();
+
+            // Contoh penggunaan login
+            if (!login.masuk()) {
+                System.out.println("Login gagal. Silakan coba lagi.");
+                return;
+            }
+
+            Bank bank = new Bank();
+            Tamu tamu = new Tamu("AGIL", "2024-01-03");
+            tamu.infoTamu();
+
+            // Contoh penggunaan saldo dari bank
+            System.out.println("Saldo saat ini: " + bank.getSaldo());
+
+            // Contoh transaksi pembayaran
+            double jumlahPembayaran = 500.0;
+            bank.lakukanTransaksi(jumlahPembayaran);
+
+            // Contoh penggunaan saldo setelah transaksi
+            System.out.println("Saldo setelah pembayaran: " + bank.getSaldo());
+
+            Pembayaran pembayaran = new Pembayaran(tamu.getNama(), "2024-01-03", jumlahPembayaran);
+            pembayaran.cetakStruk();
+        }
+    }
+}
+
+class Kamar implements Daftar {
+    private String[] daftarKamar;
+
+    public Kamar() {
+        // Inisialisasi atau pengambilan daftar kamar dari database atau sumber lainnya
+        this.daftarKamar = new String[]{"Kamar Standar", "Kamar Deluxe", "Suite"};
+    }
+
+    public void daftar() {
+        System.out.println("Daftar kamar hotel:");
+        for (String jenisKamar : daftarKamar) {
+            System.out.println(jenisKamar);
+        }
+    }
+}
+
+import java.util.Scanner;
+
+class Login {
+    private Scanner scanner;
+
+    public Login() {
+        this.scanner = new Scanner(System.in);
+    }
+
+    public boolean masuk(String username, String password) {
+        // Implementasi login
+        // Ganti dengan logika sesuai kebutuhan
+        return "agil".equals(username) && "1234".equals(password);
+    }
+
+    public boolean masuk() {
+        System.out.println("====LOGIN REGISTRASI====");
+        System.out.print("Masukkan username: ");
+        String inputUsername = scanner.nextLine();
+
+        System.out.print("Masukkan password: ");
+        String inputPassword = scanner.nextLine();
+
+        // Implementasi login
+        // Ganti dengan logika sesuai kebutuhan
+        return "agil".equals(inputUsername) && "1234".equals(inputPassword);
+    }
+}
+
+
+class Bank {
+    private double saldo = 1000000;
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    // Tambahkan metode untuk transaksi pembayaran atau penarikan
+    public void lakukanTransaksi(double jumlah) {
+        saldo -= jumlah;
+    }
+}
+
+
+class Tamu {
+    private String nama;
+    private String tglMasuk;
+
+    public Tamu(String nama, String tglMasuk) {
+        this.nama = nama;
+        this.tglMasuk = tglMasuk;
+    }
+
+    public String getNama() {
+        return nama;
+    }
+
+    public void infoTamu() {
+        System.out.println("===SELAMAT DATANG AGIL===");
+        System.out.println("Nama: " + nama);
+        System.out.println("Tanggal Masuk: " + tglMasuk);
+    }
+}
+
+
+class Pembayaran {
+    private String namaTamu;
+    private String tanggalPembayaran;
+    private double jumlahPembayaran;
+
+    public Pembayaran(String namaTamu, String tanggalPembayaran, double jumlahPembayaran) {
+        this.namaTamu = namaTamu;
+        this.tanggalPembayaran = tanggalPembayaran;
+        this.jumlahPembayaran = jumlahPembayaran;
+    }
+
+    public void cetakStruk() {
+        // Implementasi cetak struk
+        System.out.println("===== Struk Pembayaran =====");
+        System.out.println("Nama Tamu: " + namaTamu);
+        System.out.println("Tanggal Pembayaran: " + tanggalPembayaran);
+        System.out.println("Jumlah Pembayaran: " + jumlahPembayaran);
+        System.out.println("============================");
+    }
+}
+
+
+//interface
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+
+interface Daftar {
+    void daftar();
+}
+
+
