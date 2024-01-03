@@ -1,0 +1,19 @@
+class Tamu {
+    private String nama;
+    private String tglMasuk;
+
+    public Tamu(String nama, String tglMasuk) {
+        this.nama = nama;
+        this.tglMasuk = tglMasuk;
+    }
+
+    public String getNama() {
+        return nama;
+    }
+
+    public void infoTamu() {
+        System.out.println("===SELAMAT DATANG AGIL===");
+        System.out.println("Nama: " + nama);
+        System.out.println("Tanggal Masuk: " + tglMasuk);
+    }
+}
