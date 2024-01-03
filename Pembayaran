@@ -1,0 +1,20 @@
+class Pembayaran {
+    private String namaTamu;
+    private String tanggalPembayaran;
+    private double jumlahPembayaran;
+
+    public Pembayaran(String namaTamu, String tanggalPembayaran, double jumlahPembayaran) {
+        this.namaTamu = namaTamu;
+        this.tanggalPembayaran = tanggalPembayaran;
+        this.jumlahPembayaran = jumlahPembayaran;
+    }
+
+    public void cetakStruk() {
+        // Implementasi cetak struk
+        System.out.println("===== Struk Pembayaran =====");
+        System.out.println("Nama Tamu: " + namaTamu);
+        System.out.println("Tanggal Pembayaran: " + tanggalPembayaran);
+        System.out.println("Jumlah Pembayaran: " + jumlahPembayaran);
+        System.out.println("============================");
+    }
+}
